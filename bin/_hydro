@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+/**
+ * Dependencies.
+ */
+
+var argv = require('argvee')();
+var resolve = require('resolve').sync;
+var basedir = process.cwd();
+var path = null;
+
+// set title
+process.title = 'hydro';
+
+try {
+  path = resolve('hydro', { basedir: basedir });
+} catch (err) {
+  console.error('Unable find local hydro');
+  process.exit(1);
+}
+
+require(path)().cli(argv);

@@ -1,0 +1,25 @@
+{
+  "name": "hydro-cli",
+  "version": "0.0.1",
+  "preferGlobal": true,
+  "description": "Hydro CLI",
+  "homepage": "https://github.com/hydrojs/hydro-cli",
+  "author": "Veselin Todorov <hi@vesln.com>",
+  "license": "MIT",
+  "files": [
+    "bin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hydrojs/hydro-cli"
+  },
+  "bin": {
+    "hydro": "bin/hydro",
+    "_hydro": "bin/_hydro"
+  },
+  "dependencies": {
+    "argvee": "~0.1.1",
+    "resolve": "^1.0.0",
+    "v8-argv": "~0.2.0"
+  }
+}
