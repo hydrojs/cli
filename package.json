@@ -1,6 +1,6 @@
 {
   "name": "hydro-cli",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "preferGlobal": true,
   "description": "Hydro CLI",
   "homepage": "https://github.com/hydrojs/hydro-cli",
