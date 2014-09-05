@@ -4,10 +4,26 @@
  * Dependencies.
  */
 
+var join = require('path').join;
 var argv = require('argvee')();
 var resolve = require('resolve').sync;
 var basedir = process.cwd();
 var hydroPath = null;
+
+/**
+ * Check if we are inside `hydro`.
+ *
+ * @returns {Boolean}
+ * @api private
+ */
+
+function isHydro() {
+  try {
+    return require(join(basedir, 'package.json')).name === 'hydro';
+  } catch (e) {
+    return false;
+  }
+}
 
 // set title
 process.title = 'hydro';
@@ -15,9 +31,13 @@ process.title = 'hydro';
 try {
   hydroPath = resolve('hydro', { basedir: basedir });
 } catch (err) {
-  console.error('Unable to find local hydro');
-  console.error('Run `npm install hydro --save-dev`');
-  process.exit(1);
+  if (isHydro()) {
+    hydroPath = basedir;
+  } else {
+    console.error('Unable to find local hydro');
+    console.error('Run `npm install hydro --save-dev`');
+    process.exit(1);
+  }
 }
 
 // fire up the cli
